@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+
+        <title>Mobile Screens, for testing CSS Media Queries</title>
+        <meta name="description" content="Responsive CSS testing tool"/>
+        <link type="text/css" rel="stylesheet" href="bootstrap.min.css"/>
+        <link type="text/css" rel="stylesheet/less" href="style.less"/>
+        <script type="text/javascript" src="less-1.2.1.min.js"></script>
+    </head>
+
+    <body>
+        <div class="navbar navbar-fixed">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#">Mobile Screens<small>for testing CSS Media Queries</small></a>
+
+                    <ul class="nav pull-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">Devices <b class="caret"></b></a>
+
+                            <ul class="dropdown-menu">
+                                <li><a href="#" data-device="iphone"><i class="phone"></i> iPhone</a></li>
+                                <li><a href="#" data-device="iphone4"><i class="phone"></i> iPhone4</a></li>
+                                <li><a href="#" data-device="nexus-one"><i class="phone"></i> Nexus One</a></li>
+                                <li><a href="#" data-device="nexus-s"><i class="phone"></i> Nexus S</a></li>
+                                <li><a href="#" data-device="galaxy-nexus"><i class="phone"></i> Galaxy Nexus</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#" data-device="ipad"><i class="tablet"></i> iPad</a></li>
+                                <li><a href="#" data-device="xoom"><i class="tablet"></i> Motorola XOOM</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="btn-group pull-right">
+                        <a class="btn" data-orientation="portrait" href="#"><i class="phone-portrait"></i> Portrait</a>
+                        <a class="btn" data-orientation="landscape" href="#"><i class="phone-landscape"></i> Landscape</a>
+                    </div>
+
+                    <form class="navbar-search pull-right" action="">
+                        <input type="text" class="search-query span4" placeholder="Type any URL and hit Enter">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="device" data-device="nexus-one" data-orientation="landscape">
+            <iframe sandbox="allow-same-origin allow-top-navigation allow-forms allow-scripts" seamless="seamless" src="http://www.bostonglobe.com/"></iframe>
+        </div>
+
+        <footer>
+            <ul>
+                <li><iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=codeinchaos&repo=mobile-screens&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="70px" height="20px"></iframe></li>
+                <li><iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=codeinchaos&repo=mobile-screens&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="60px" height="20px"></iframe></li>
+                <li><iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=codeinchaos&type=follow&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="140px" height="20px"></iframe></li>
+                <li class="divider">&middot;</li>
+                <li><a href="https://twitter.com/CodeInChaos" class="twitter-follow-button" data-width="145px" data-link-color="#0069D6" data-show-count="false">Follow @CodeInChaos</a></li>
+                <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://codeinchaos.github.com/mobile-screens/" data-count="horizontal" data-via="codeinchaos" data-related="codeinchaos:Creator of Mobile Screens">Tweet</a></li>
+                <li class="divider">&middot;</li>
+                <li><a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License (MIT)</a></li>
+                <li>Icons from <a href="http://glyphicons.com" target="_blank">Glyphicons Free</a></li>
+            </ul>
+        </footer>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js"></script>
+        <script type="text/javascript">
+            window.addEvent('domready', function(event) {
+                // dropdown
+                document.getElement('.dropdown-toggle').addEvent('click', function(event) {
+                    event.preventDefault();
+
+                    this.getParent('.dropdown').toggleClass('open');
+                });
+
+                // device switch
+                document.getElements('.dropdown-menu li a').addEvent('click', function(event) {
+                    event.preventDefault();
+
+                    // hide dropdown
+                    this.getParent('.dropdown').toggleClass('open');
+
+                    var device = this.get('data-device');
+
+                    document.id('device').set('data-device', device);
+                });
+
+                // orientation switch
+                document.getElements('.btn-group a').addEvent('click', function(event) {
+                    event.preventDefault();
+
+                    var orientation = this.get('data-orientation');
+
+                    document.id('device').set('data-orientation', orientation);
+                });
+
+                // form submit
+                document.getElement('form').addEvent('submit', function(event) {
+                    event.preventDefault();
+
+                    var link = this.getElement('input[type="text"]').get('value');
+
+                    document.getElement('#device iframe').set('src', link);
+                });
+            });
+        </script>
+        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    </body>
+</html>
