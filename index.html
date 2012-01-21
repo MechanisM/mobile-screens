@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html manifest="cache.manifest">
+<html>
     <head>
         <meta charset="utf-8"/>
 
         <title>Mobile Screens, for testing CSS Media Queries</title>
         <meta name="description" content="Responsive CSS testing tool"/>
-        <link type="text/css" rel="stylesheet" href="bootstrap.min.css"/>
-        <link type="text/css" rel="stylesheet/less" href="style.less"/>
-        <script type="text/javascript" src="less-1.2.1.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link type="text/css" rel="stylesheet/less" href="css/style.less?v=2"/>
+        <script type="text/javascript" src="js/less-1.2.1.min.js"></script>
     </head>
 
     <body>
@@ -46,7 +46,7 @@
         </div>
 
         <div id="device" data-device="nexus-one" data-orientation="landscape">
-            <iframe sandbox="allow-same-origin allow-top-navigation allow-forms allow-scripts" seamless="seamless" src="http://www.bostonglobe.com/"></iframe>
+            <iframe sandbox="allow-same-origin allow-top-navigation allow-forms allow-scripts" seamless="seamless"></iframe>
         </div>
 
         <footer>
@@ -63,7 +63,8 @@
             </ul>
         </footer>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js"></script>
+        <script src="js/mootools-core-1.4.2.min.js"></script>
+
         <script type="text/javascript">
             window.addEvent('domready', function(event) {
                 // dropdown
@@ -102,6 +103,10 @@
 
                     document.getElement('#device iframe').set('src', link);
                 });
+
+                // set the iframe src AFTER everything is loaded
+                //document.getElement('#device iframe').set('src', 'http://www.bostonglobe.com/');
+                document.getElement('#device iframe').set('src', 'http://www.codeinchaos.com/');
             });
         </script>
 
