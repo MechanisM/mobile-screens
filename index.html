@@ -43,11 +43,18 @@
                         <a class="btn" data-orientation="landscape" href="#"><i class="phone-landscape"></i> Landscape</a>
                     </div>
 
-                    <form class="navbar-search pull-right" action="">
-                        <input type="text" class="search-query span4" placeholder="Type any URL and hit Enter">
+                    <form class="navbar-search pull-right">
+                        <input type="text" class="search-query span4" placeholder="Type any URL and hit Enter" autofocus="true">
                     </form>
                 </div>
             </div>
+        </div>
+
+        <div class="alert alert-block">
+            <h4 class="alert-heading">Warning!</h4>
+            <p>This tool uses <a href="http://en.wikipedia.org/wiki/HTML_element#Frames" target="_blank">IFrames</a>, and will not work with sites that deny IFrames<br/>using <code>X-Frame-Options</code> or any other anti-clickjacking methods.</p>
+            <p>Furthermore, there are no browser APIs to allow the detection of a failure to load a link within an IFrame, this warning message is as good as it gets.</p>
+            <p>Read more about Clickjacking <a href="https://www.owasp.org/index.php/Clickjacking" target="_blank">here</a>.</p>
         </div>
 
         <div id="device" data-device="nexus-one" data-orientation="landscape">
@@ -104,13 +111,35 @@
                 document.getElement('form').addEvent('submit', function(event) {
                     event.preventDefault();
 
-                    var link = this.getElement('input[type="text"]').get('value');
+                    var iframe = document.getElement('#device iframe');
+                    var input = this.getElement('input[type="text"]');
+                    var link = input.get('value');
 
-                    document.getElement('#device iframe').set('src', link);
+                    if (link.length && link.substr(0, 4) != 'http') {
+                        link = 'http://' + link;
+                        input.set('value', link);
+                    }
+
+                    document.body.addClass('loading');
+
+                    window.scrollTo(0, 0);
+
+                    iframe.set('src', link);
                 });
 
-                // set the iframe src AFTER everything is loaded
-                document.getElement('#device iframe').set('src', 'http://www.bostonglobe.com/');
+                document.getElement('#device iframe').addEvents({
+                    'load': function(event) {
+                        if (this.get('src') != 'about:blank') {
+                            document.body.removeClass('loading');
+                        }
+                    },
+
+                    'readystatechange': function(event) {
+                        if (this.readyState == 'complete') {
+                            this.fireEvent('load');
+                        }
+                    }
+                }).set('src', ['http://www.globe.com/', 'http://www.smashingmagazine.com/', 'http://24ways.org/', 'http://www.barackobama.com/', 'http://10k.aneventapart.com/2/Uploads/621/', 'http://10k.aneventapart.com/2/Uploads/539/', 'http://www.alistapart.com/d/responsive-web-design/ex/ex-site-flexible.html'].getRandom());
             });
         </script>
 

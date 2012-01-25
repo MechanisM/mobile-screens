@@ -1,329 +1,346 @@
-.user-select() {
-    -webkit-user-select: @arguments;
-    -khtml-user-select: @arguments;
-    -moz-user-select: @arguments;
-    -ms-user-select: @arguments;
-    -o-user-select: @arguments;
-    user-select: @arguments;
-}
-
 body {
     padding-top: 60px;
 
-    .user-select(none);
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+
+    .alert {
+
+        width: 500px;
+        margin: 0px auto;
+        -webkit-transition: all 0.3s ease-out;  /* Saf3.2+, Chrome */
+        -moz-transition: all 0.3s ease-out;  /* FF4+ */
+        -ms-transition: all 0.3s ease-out;  /* IE10 */
+        -o-transition: all 0.3s ease-out;  /* Opera 10.5+ */
+        transition: all 0.3s ease-out;
+    }
+
+    &:not(.loading) {
+        .alert {
+            height: 0;
+            padding: 0px;
+            border: 0;
+            overflow: hidden;
+        }
+    }
+
+    .navbar {
+        .brand {
+            padding: 3px 20px 5px;
+
+            small {
+                font-size: 60%;
+                display: block;
+            }
+        }
+
+        .dropdown-menu {
+            a {
+                width: 175px;
+
+                span {
+                    font-size: 75%;
+                    text-align: right;
+                    position: absolute;
+                    right: 15px;
+                }
+            }
+        }
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0px;
+
+        width: 100%;
+        padding: 5px 0px;
+        text-align: center;
+        background-color: #EEE;
+
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+
+        -webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
+        -moz-box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
+        box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
+
+        ul {
+            list-style: none;
+
+            li {
+                display: inline;
+                margin: 0 5px;
+
+                &.divider {
+                    color: #999;
+                }
+
+                iframe {
+                    position: relative;
+                    top: 5px;
+                }
+            }
+        }
+    }
+
+    .btn-group {
+        margin-left: 10px;
+    }
+
+    i {
+        background-image: url('../images/icons/glyphicons-halflings-sprite.png');
+
+        &.phone,
+        &.phone-portrait {
+            background-position: 50% 50%;
+            background-image: url('../images/icons/phone-portrait.png');
+        }
+
+        &.phone-landscape {
+            background-position: 50% 50%;
+            background-image: url('../images/icons/phone-landscape.png');
+        }
+
+        &.tablet,
+        &.tablet-portrait {
+            background-position: 50% 50%;
+            background-image: url('../images/icons/tablet-portrait.png');
+        }
+
+        &.tablet-landscape {
+            background-position: 50% 50%;
+            background-image: url('../images/icons/tablet-landscape.png');
+        }
+    }
+
+    #device {
+        margin: 0px auto;
+        margin-bottom: 50px;
+        background-repeat: no-repeat;
+
+        iframe {
+            border: none;
+            background-color: white;
+
+            overflow: auto;
+
+            ::-webkit-scrollbar {
+                width:10px;
+                height:10px;
+                background-color: transparent;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background-color: rgba(0,0,0,0.2);
+                -webkit-border-radius: 4px;
+            }
+
+            ::-webkit-scrollbar-button:start:decrement,
+            ::-webkit-scrollbar-button:end:increment {
+                display: none;
+            }
+        }
+
+        &[data-device="nexus-one"] {
+            &[data-orientation="portrait"] {
+                width: 765px;
+                height: 1300px;
+                background-image: url('../images/devices/nexus-one-portrait.jpg');
+
+                iframe {
+                    width: 480px;
+                    height: 800px;
+                    margin-top: 191px;
+                    margin-left: 141px;
+                }
+            }
+
+            &[data-orientation="landscape"] {
+                width: 1300px;
+                height: 765px;
+                background-image: url('../images/devices/nexus-one-landscape.jpg');
+
+                iframe {
+                    width: 800px;
+                    height: 480px;
+                    margin-top: 130px;
+                    margin-left: 200px;
+                }
+            }
+        }
+
+        &[data-device="nexus-s"] {
+            &[data-orientation="portrait"] {
+                width: 749px;
+                height: 1308px;
+                background-image: url('../images/devices/nexus-s-portrait.jpg');
+
+                iframe {
+                    width: 480px;
+                    height: 800px;
+                    margin-top: 247px;
+                    margin-left: 134px;
+                }
+            }
+
+            &[data-orientation="landscape"] {
+                width: 1308px;
+                height: 749px;
+                background-image: url('../images/devices/nexus-s-landscape.jpg');
+
+                iframe {
+                    width: 800px;
+                    height: 480px;
+                    margin-top: 135px;
+                    margin-left: 247px;
+                }
+            }
+        }
+
+        &[data-device="galaxy-nexus"] {
+            &[data-orientation="portrait"] {
+                width: 1148px;
+                height: 1994px;
+                background-image: url('../images/devices/galaxy-nexus-portrait.jpg');
+
+                iframe {
+                    width: 720px;
+                    height: 1280px;
+                    margin-top: 353px;
+                    margin-left: 216px;
+                }
+            }
+
+            &[data-orientation="landscape"] {
+                width: 1994px;
+                height: 1148px;
+                background-image: url('../images/devices/galaxy-nexus-landscape.jpg');
+
+                iframe {
+                    width: 1280px;
+                    height: 720px;
+                    margin-top: 199px;
+                    margin-left: 371px;
+                }
+            }
+        }
+
+        &[data-device="iphone"] {
+            &[data-orientation="portrait"] {
+                width: 392px;
+                height: 739px;
+                background-image: url('../images/devices/iphone-portrait.jpg');
+
+                iframe {
+                    width: 320px;
+                    height: 480px;
+                    margin-top: 136px;
+                    margin-left: 37px;
+                }
+            }
+
+            &[data-orientation="landscape"] {
+                width: 739px;
+                height: 392px;
+                background-image: url('../images/devices/iphone-landscape.jpg');
+
+                iframe {
+                    width: 480px;
+                    height: 320px;
+                    margin-top: 35px;
+                    margin-left: 135px;
+                }
+            }
+        }
+
+        &[data-device="iphone4"] {
+            &[data-orientation="portrait"] {
+                width: 815px;
+                height: 1564px;
+                background-image: url('../images/devices/iphone4-portrait.jpg');
+
+                iframe {
+                    width: 640px;
+                    height: 960px;
+                    margin-top: 300px;
+                    margin-left: 87px;
+                }
+            }
+
+            &[data-orientation="landscape"] {
+                width: 1564px;
+                height: 815px;
+                background-image: url('../images/devices/iphone4-landscape.jpg');
+
+                iframe {
+                    width: 960px;
+                    height: 640px;
+                    margin-top: 88px;
+                    margin-left: 300px;
+                }
+            }
+        }
+
+        &[data-device="ipad"] {
+            &[data-orientation="portrait"] {
+                width: 1016px;
+                height: 1295px;
+                background-image: url('../images/devices/ipad-portrait.jpg');
+
+                iframe {
+                    width: 768px;
+                    height: 1024px;
+                    margin-top: 136px;
+                    margin-left: 124px;
+                }
+            }
+
+            &[data-orientation="landscape"] {
+                width: 1295px;
+                height: 1016px;
+                background-image: url('../images/devices/ipad-landscape.jpg');
+
+                iframe {
+                    width: 1024px;
+                    height: 768px;
+                    margin-top: 124px;
+                    margin-left: 136px;
+                }
+            }
+        }
+
+        &[data-device="xoom"] {
+            &[data-orientation="portrait"] {
+                width: 1198px;
+                height: 1700px;
+                background-image: url('../images/devices/xoom-portrait.jpg');
+
+                iframe {
+                    width: 800px;
+                    height: 1280px;
+                    margin-top: 200px;
+                    margin-left: 199px;
+                }
+            }
+
+            &[data-orientation="landscape"] {
+                width: 1700px;
+                height: 1198px;
+                background-image: url('../images/devices/xoom-landscape.jpg');
+
+                iframe {
+                    width: 1280px;
+                    height: 800px;
+                    margin-top: 191px;
+                    margin-left: 218px;
+                }
+            }
+        }
+    }
 }
 
-.navbar {
-    .brand {
-        padding: 3px 20px 5px;
-
-        small {
-            font-size: 60%;
-            display: block;
-        }
-    }
-
-    .dropdown-menu {
-        a {
-            width: 175px;
-
-            span {
-                font-size: 75%;
-                text-align: right;
-                position: absolute;
-                right: 15px;
-            }
-        }
-    }
-}
-
-footer {
-    position: fixed;
-    bottom: 0px;
-
-    width: 100%;
-    padding: 5px 0px;
-    text-align: center;
-    background-color: #EEE;
-
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-
-    -webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
-    -moz-box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
-    box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
-
-    ul {
-        list-style: none;
-
-        li {
-            display: inline;
-            margin: 0 5px;
-
-            &.divider {
-                color: #999;
-            }
-
-            iframe {
-                position: relative;
-                top: 5px;
-            }
-        }
-    }
-}
-
-.btn-group {
-    margin-left: 10px;
-}
-
-i {
-    background-image: url('../images/icons/glyphicons-halflings-sprite.png');
-
-    &.phone,
-    &.phone-portrait {
-        background-position: 50% 50%;
-        background-image: url('../images/icons/phone-portrait.png');
-    }
-
-    &.phone-landscape {
-        background-position: 50% 50%;
-        background-image: url('../images/icons/phone-landscape.png');
-    }
-
-    &.tablet,
-    &.tablet-portrait {
-        background-position: 50% 50%;
-        background-image: url('../images/icons/tablet-portrait.png');
-    }
-
-    &.tablet-landscape {
-        background-position: 50% 50%;
-        background-image: url('../images/icons/tablet-landscape.png');
-    }
-}
-
-#device {
-    margin: 0px auto;
-    margin-bottom: 50px;
-    background-repeat: no-repeat;
-
-    iframe {
-        border: none;
-        background-color: white;
-
-        overflow: auto;
-
-        ::-webkit-scrollbar {
-            width:10px;
-            height:10px;
-            background-color: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: rgba(0,0,0,0.2);
-            -webkit-border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-button:start:decrement,
-        ::-webkit-scrollbar-button:end:increment {
-            display: none;
-        }
-    }
-
-    &[data-device="nexus-one"] {
-        &[data-orientation="portrait"] {
-            width: 765px;
-            height: 1300px;
-            background-image: url('../images/devices/nexus-one-portrait.jpg');
-
-            iframe {
-                width: 480px;
-                height: 800px;
-                margin-top: 191px;
-                margin-left: 141px;
-            }
-        }
-
-        &[data-orientation="landscape"] {
-            width: 1300px;
-            height: 765px;
-            background-image: url('../images/devices/nexus-one-landscape.jpg');
-
-            iframe {
-                width: 800px;
-                height: 480px;
-                margin-top: 130px;
-                margin-left: 200px;
-            }
-        }
-    }
-
-    &[data-device="nexus-s"] {
-        &[data-orientation="portrait"] {
-            width: 749px;
-            height: 1308px;
-            background-image: url('../images/devices/nexus-s-portrait.jpg');
-
-            iframe {
-                width: 480px;
-                height: 800px;
-                margin-top: 247px;
-                margin-left: 134px;
-            }
-        }
-
-        &[data-orientation="landscape"] {
-            width: 1308px;
-            height: 749px;
-            background-image: url('../images/devices/nexus-s-landscape.jpg');
-
-            iframe {
-                width: 800px;
-                height: 480px;
-                margin-top: 135px;
-                margin-left: 247px;
-            }
-        }
-    }
-
-    &[data-device="galaxy-nexus"] {
-        &[data-orientation="portrait"] {
-            width: 1148px;
-            height: 1994px;
-            background-image: url('../images/devices/galaxy-nexus-portrait.jpg');
-
-            iframe {
-                width: 720px;
-                height: 1280px;
-                margin-top: 353px;
-                margin-left: 216px;
-            }
-        }
-
-        &[data-orientation="landscape"] {
-            width: 1994px;
-            height: 1148px;
-            background-image: url('../images/devices/galaxy-nexus-landscape.jpg');
-
-            iframe {
-                width: 1280px;
-                height: 720px;
-                margin-top: 199px;
-                margin-left: 371px;
-            }
-        }
-    }
-
-    &[data-device="iphone"] {
-        &[data-orientation="portrait"] {
-            width: 392px;
-            height: 739px;
-            background-image: url('../images/devices/iphone-portrait.jpg');
-
-            iframe {
-                width: 320px;
-                height: 480px;
-                margin-top: 136px;
-                margin-left: 37px;
-            }
-        }
-
-        &[data-orientation="landscape"] {
-            width: 739px;
-            height: 392px;
-            background-image: url('../images/devices/iphone-landscape.jpg');
-
-            iframe {
-                width: 480px;
-                height: 320px;
-                margin-top: 35px;
-                margin-left: 135px;
-            }
-        }
-    }
-
-    &[data-device="iphone4"] {
-        &[data-orientation="portrait"] {
-            width: 815px;
-            height: 1564px;
-            background-image: url('../images/devices/iphone4-portrait.jpg');
-
-            iframe {
-                width: 640px;
-                height: 960px;
-                margin-top: 300px;
-                margin-left: 87px;
-            }
-        }
-
-        &[data-orientation="landscape"] {
-            width: 1564px;
-            height: 815px;
-            background-image: url('../images/devices/iphone4-landscape.jpg');
-
-            iframe {
-                width: 960px;
-                height: 640px;
-                margin-top: 88px;
-                margin-left: 300px;
-            }
-        }
-    }
-
-    &[data-device="ipad"] {
-        &[data-orientation="portrait"] {
-            width: 1016px;
-            height: 1295px;
-            background-image: url('../images/devices/ipad-portrait.jpg');
-
-            iframe {
-                width: 768px;
-                height: 1024px;
-                margin-top: 136px;
-                margin-left: 124px;
-            }
-        }
-
-        &[data-orientation="landscape"] {
-            width: 1295px;
-            height: 1016px;
-            background-image: url('../images/devices/ipad-landscape.jpg');
-
-            iframe {
-                width: 1024px;
-                height: 768px;
-                margin-top: 124px;
-                margin-left: 136px;
-            }
-        }
-    }
-
-    &[data-device="xoom"] {
-        &[data-orientation="portrait"] {
-            width: 1198px;
-            height: 1700px;
-            background-image: url('../images/devices/xoom-portrait.jpg');
-
-            iframe {
-                width: 800px;
-                height: 1280px;
-                margin-top: 200px;
-                margin-left: 199px;
-            }
-        }
-
-        &[data-orientation="landscape"] {
-            width: 1700px;
-            height: 1198px;
-            background-image: url('../images/devices/xoom-landscape.jpg');
-
-            iframe {
-                width: 1280px;
-                height: 800px;
-                margin-top: 191px;
-                margin-left: 218px;
-            }
-        }
-    }
-}
